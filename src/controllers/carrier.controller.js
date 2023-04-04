@@ -2,7 +2,7 @@ const Carrier = require("../models/carrier.model");
 
 exports.getAllCarriers = async (req, res, next) => {
   try {
-    const carriers = await Carrier.find();
+    const carriers = await Carrier.find().populate("shipments");
     res.status(200).json(carriers);
   } catch (err) {
     next(err);

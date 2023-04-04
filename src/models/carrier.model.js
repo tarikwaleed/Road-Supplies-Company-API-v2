@@ -14,14 +14,19 @@ const carrierSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
 carrierSchema.virtual("shipments", {
   ref: "Shipment",
   localField: "_id",
   foreignField: "carrier",
   justOne: false,
-  populate: true,
+  populate: {
+    path: "shipments",
+    options: { 
+      populate: true 
+    }
+  }
 });
+
 
 carrierSchema.virtual("shipmentsCount", {
   ref: "Shipment",

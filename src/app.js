@@ -9,6 +9,7 @@ const helmet = require("helmet");
 
 //! HERE
 const carrierRouter = require("./routes/carrier.router");
+const shipmentRouter = require("./routes/shipment.router");
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(helmet());
 
 //! HERE
 app.use("/api/carrier", carrierRouter);
+app.use("/api/shipment", shipmentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
